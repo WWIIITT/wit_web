@@ -304,6 +304,14 @@ body {
     font-size: 1.8rem;
     color: #34495e;
     font-weight: 500;
+    display: inline-block;
+    min-width: 200px;
+    width: 200px;
+    text-align: left;
+}
+
+.role-title::after {
+    content: '\200B';
 }
 
 .cat-cursor {
