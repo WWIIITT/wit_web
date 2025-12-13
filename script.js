@@ -2,17 +2,25 @@
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
     const scrollPosition = window.scrollY;
-    const maxScroll = 300; // Maximum scroll for full opacity
+    const maxScroll = 500; // Maximum scroll distance for transition
     
+    // Calculate smooth opacity transition from 0.2 (very transparent) to 0.95 (almost opaque)
+    const minOpacity = 0.2;
+    const maxOpacity = 0.95;
+    const opacityRange = maxOpacity - minOpacity;
+    
+    // Calculate current opacity based on scroll position with smooth curve
+    let opacity = minOpacity + (scrollPosition / maxScroll) * opacityRange;
+    opacity = Math.min(Math.max(opacity, minOpacity), maxOpacity);
+    
+    // Apply smooth background transition
+    navbar.style.background = `rgba(0, 0, 0, ${opacity})`;
+    
+    // Add scrolled class for additional styling if needed
     if (scrollPosition > 50) {
         navbar.classList.add('scrolled');
-        
-        // Calculate opacity based on scroll position
-        const opacity = Math.min(0.3 + (scrollPosition / maxScroll) * 0.6, 0.9);
-        navbar.style.background = `rgba(0, 0, 0, ${opacity})`;
     } else {
         navbar.classList.remove('scrolled');
-        navbar.style.background = 'rgba(0, 0, 0, 0.3)';
     }
 });
 
