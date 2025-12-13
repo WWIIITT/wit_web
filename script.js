@@ -1,10 +1,18 @@
-// Navbar background change on scroll
+// Navbar background change on scroll with smooth opacity transition
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
+    const scrollPosition = window.scrollY;
+    const maxScroll = 300; // Maximum scroll for full opacity
+    
+    if (scrollPosition > 50) {
         navbar.classList.add('scrolled');
+        
+        // Calculate opacity based on scroll position
+        const opacity = Math.min(0.3 + (scrollPosition / maxScroll) * 0.6, 0.9);
+        navbar.style.background = `rgba(0, 0, 0, ${opacity})`;
     } else {
         navbar.classList.remove('scrolled');
+        navbar.style.background = 'rgba(0, 0, 0, 0.3)';
     }
 });
 
