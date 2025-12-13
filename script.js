@@ -40,31 +40,59 @@ if (themeToggle) {
     });
 }
 
-// Animate cards on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe all cards
-document.querySelectorAll('.card').forEach(card => {
-    observer.observe(card);
-});
-
 // Scroll indicator click
 const scrollIndicator = document.querySelector('.scroll-indicator');
 if (scrollIndicator) {
     scrollIndicator.addEventListener('click', function() {
-        const contentSection = document.querySelector('.content-section');
-        contentSection.scrollIntoView({ behavior: 'smooth' });
+        const aboutSection = document.querySelector('.about-section');
+        aboutSection.scrollIntoView({ behavior: 'smooth' });
     });
+}
+
+// AI Engineer typing and deleting animation
+const roleTitle = document.getElementById('roleTitle');
+if (roleTitle) {
+    const text = 'AI Engineer';
+    let currentText = text;
+    let isDeleting = false;
+    let charIndex = text.length;
+    
+    function animateText() {
+        if (!isDeleting) {
+            // Wait 4 seconds before starting to delete
+            setTimeout(() => {
+                isDeleting = true;
+                deleteText();
+            }, 4000);
+        }
+    }
+    
+    function deleteText() {
+        if (charIndex > 0) {
+            charIndex--;
+            roleTitle.textContent = text.substring(0, charIndex);
+            setTimeout(deleteText, 100);
+        } else {
+            // Start typing again
+            isDeleting = false;
+            setTimeout(typeText, 500);
+        }
+    }
+    
+    function typeText() {
+        if (charIndex < text.length) {
+            charIndex++;
+            roleTitle.textContent = text.substring(0, charIndex);
+            setTimeout(typeText, 150);
+        } else {
+            // Wait and start deleting again
+            setTimeout(() => {
+                isDeleting = true;
+                deleteText();
+            }, 4000);
+        }
+    }
+    
+    // Start the animation
+    animateText();
 }
