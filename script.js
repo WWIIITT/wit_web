@@ -63,7 +63,7 @@ if (roleTitle) {
             setTimeout(() => {
                 isDeleting = true;
                 deleteText();
-            }, 4000);
+            }, 2000);
         }
     }
     
