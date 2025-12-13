@@ -518,6 +518,95 @@ body {
     margin: 0;
 }
 
+/* Work Experiences Section */
+.work-experiences-section {
+    background: #f5f5f5;
+    padding: 4rem 2rem;
+    min-height: 100vh;
+}
+
+.work-card {
+    background: white;
+    border-radius: 16px;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 3rem;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    max-width: 1100px;
+    margin: 0 auto 2rem auto;
+    transition: all 0.3s ease;
+}
+
+.work-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.work-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+}
+
+.work-logo img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.work-content {
+    text-align: center;
+}
+
+.work-company {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.work-location {
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.work-position {
+    font-size: 1.3rem;
+    color: #34495e;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.work-date {
+    color: #7f8c8d;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.work-button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #4a4a4a;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.work-button:hover {
+    background: #2c3e50;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 /* Footer */
 .footer {
     background: #4a4a4a;
@@ -589,6 +678,16 @@ body {
     .tech-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 1rem;
+    }
+    
+    .work-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 2rem;
+    }
+    
+    .work-logo {
+        margin: 0 auto;
     }
     
     .dropdown-menu {
