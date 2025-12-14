@@ -65,6 +65,57 @@ if (scrollIndicator) {
     });
 }
 
+// Mobile hero title typing effect (two lines)
+(function mobileHeroTyping() {
+    const heroTitle = document.querySelector('.hero-title');
+    if (!heroTitle) return;
+
+    const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!isMobile || reduceMotion) return;
+
+    const lines = heroTitle.querySelectorAll('.hero-title-line');
+    if (!lines || lines.length < 2) return;
+
+    const line1 = lines[0];
+    const line2 = lines[1];
+
+    const text1 = (line1.getAttribute('data-full-text') || line1.textContent || '').trim();
+    const text2 = (line2.getAttribute('data-full-text') || line2.textContent || '').trim();
+    if (!text1 || !text2) return;
+
+    line1.setAttribute('data-full-text', text1);
+    line2.setAttribute('data-full-text', text2);
+
+    // Clear existing text before typing
+    line1.textContent = '';
+    line2.textContent = '';
+
+    const typingSpeed = 55;
+    const betweenLinesDelay = 250;
+
+    function typeInto(element, fullText, onDone) {
+        let index = 0;
+        function tick() {
+            index += 1;
+            element.textContent = fullText.slice(0, index);
+            if (index < fullText.length) {
+                setTimeout(tick, typingSpeed);
+            } else if (onDone) {
+                onDone();
+            }
+        }
+        tick();
+    }
+
+    // Start typing after a short beat so layout settles
+    setTimeout(() => {
+        typeInto(line1, text1, () => {
+            setTimeout(() => typeInto(line2, text2), betweenLinesDelay);
+        });
+    }, 200);
+})();
+
 // AI Engineer typing and deleting animation
 const roleTitle = document.getElementById('roleTitle');
 if (roleTitle) {
