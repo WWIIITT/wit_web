@@ -209,6 +209,14 @@ body {
                blink-caret 0.75s step-end infinite;
 }
 
+.hero-title-line {
+    display: inline;
+}
+
+.hero-title-break {
+    display: none;
+}
+
 @keyframes typing {
     from {
         width: 0;
@@ -786,6 +794,23 @@ body {
     .hero-title {
         font-size: 1.5rem;
         letter-spacing: 0.1em;
+    }
+
+    .hero-title {
+        max-width: min(92vw, 720px);
+        white-space: normal;
+        overflow: visible;
+        border-right: none;
+        animation: none;
+        text-align: center;
+    }
+
+    .hero-title-line {
+        display: block;
+    }
+
+    .hero-title-break {
+        display: block;
     }
     
     .hero-content {
