@@ -795,7 +795,7 @@ body {
     
     .hero-title {
         font-size: 1.5rem;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.06em;
     }
 
     .hero-title {
@@ -809,6 +809,13 @@ body {
 
     .hero-title-line {
         display: block;
+    }
+
+    .hero-title-line--second {
+        white-space: nowrap;
+        display: inline-block;
+        max-width: 100%;
+        font-size: clamp(1.05rem, 3.4vw, 1.35rem);
     }
 
     .hero-title-break {
@@ -991,7 +998,11 @@ body {
     
     .hero-title {
         font-size: 1.2rem;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.04em;
+    }
+
+    .hero-title-line--second {
+        font-size: clamp(0.98rem, 4.2vw, 1.2rem);
     }
     
     .about-section {
