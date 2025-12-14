@@ -197,7 +197,7 @@ body {
     font-size: 2.5rem;
     font-weight: 300;
     text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8);
-    overflow: hidden;
+    overflow: visible;
     border-right: 3px solid var(--text-primary);
     white-space: nowrap;
     margin: 0 auto;
@@ -205,8 +205,7 @@ body {
     font-family: 'Georgia', serif;
     font-style: italic;
     line-height: 1.4;
-    animation: typing 3.5s steps(25) 0.5s 1 normal both,
-               blink-caret 0.75s step-end infinite;
+    animation: blink-caret 0.75s step-end infinite;
 }
 
 .hero-title-line {
@@ -215,6 +214,10 @@ body {
 
 .hero-title-break {
     display: none;
+}
+
+.hero-title-space {
+    display: inline;
 }
 
 @keyframes typing {
@@ -811,6 +814,10 @@ body {
 
     .hero-title-break {
         display: block;
+    }
+
+    .hero-title-space {
+        display: none;
     }
     
     .hero-content {

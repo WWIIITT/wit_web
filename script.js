@@ -65,20 +65,22 @@ if (scrollIndicator) {
     });
 }
 
-// Mobile hero title typing effect (two lines)
-(function mobileHeroTyping() {
+// Hero title typing effect (all screen sizes)
+(function heroTitleTyping() {
     const heroTitle = document.querySelector('.hero-title');
     if (!heroTitle) return;
 
-    const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+    if (heroTitle.dataset.typed === '1') return;
+
     const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!isMobile || reduceMotion) return;
+    if (reduceMotion) return;
 
     const lines = heroTitle.querySelectorAll('.hero-title-line');
     if (!lines || lines.length < 2) return;
 
     const line1 = lines[0];
     const line2 = lines[1];
+    const spaceEl = heroTitle.querySelector('.hero-title-space');
 
     const text1 = (line1.getAttribute('data-full-text') || line1.textContent || '').trim();
     const text2 = (line2.getAttribute('data-full-text') || line2.textContent || '').trim();
@@ -89,6 +91,7 @@ if (scrollIndicator) {
 
     // Clear existing text before typing
     line1.textContent = '';
+    if (spaceEl) spaceEl.textContent = '';
     line2.textContent = '';
 
     const typingSpeed = 55;
@@ -111,9 +114,14 @@ if (scrollIndicator) {
     // Start typing after a short beat so layout settles
     setTimeout(() => {
         typeInto(line1, text1, () => {
+            if (spaceEl) {
+                spaceEl.textContent = ' ';
+            }
             setTimeout(() => typeInto(line2, text2), betweenLinesDelay);
         });
     }, 200);
+
+    heroTitle.dataset.typed = '1';
 })();
 
 // AI Engineer typing and deleting animation
