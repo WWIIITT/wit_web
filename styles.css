@@ -194,7 +194,7 @@ body {
 }
 
 .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 300;
     text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8);
     overflow: visible;
@@ -734,9 +734,8 @@ body {
     }
     
     .hero-title {
-        font-size: 2rem;
-        animation: typing 3s steps(25) 0.5s 1 normal both,
-                   blink-caret 0.75s step-end infinite;
+        font-size: 1.9rem;
+        animation: blink-caret 0.75s step-end infinite;
     }
     
     .about-container {
